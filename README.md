@@ -21,6 +21,6 @@
 - Rodar o comando: dotnet build, para executar o build do projeto;
 - Rodar o comando: dotnet run, para executar o projeto.
 - Pronto! O projeto estará em execução no localhost:<porta>, conforme imagem abaixo
-- ![image](https://github.com/matheusfogolin/CRUDMVCCarsRental/assets/57686224/c57c49da-40c5-4458-a7ae-57a2ea8e77be)
+![image](https://github.com/matheusfogolin/CRUDMVCCarsRental/assets/57686224/c57c49da-40c5-4458-a7ae-57a2ea8e77be)
 
 
