@@ -1,1 +1,5 @@
 /CRUDMVCCarsRental/Data/Migrations
+/CRUDMVCCarsRental/Data/Migrations/20231010133629_Initial-Migration.cs
+/CRUDMVCCarsRental/Data/Migrations/20231010184123_SecondMigration.cs
+/CRUDMVCCarsRental/Data/Migrations/20231010230628_ThirdMigration.cs
+/CRUDMVCCarsRental/Data/Migrations/CarsRentalDbContextModelSnapshot.cs
