@@ -1,5 +1,9 @@
 # CRUDMVCCarsRental
 
+## DESCRIÇÃO DO PROJETO
+
+CRUDMVCCarsRental é um projeto criado com ASP.NET MVC, que simula um sistema de cadastro e aluguel de carros.
+
 ## COMO RODAR O PROJETO
 
 **Requisitos:**
