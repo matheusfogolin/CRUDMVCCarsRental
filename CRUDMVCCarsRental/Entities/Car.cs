@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 
 namespace CRUDMVCCarsRental.Entities
 {
@@ -28,7 +29,6 @@ namespace CRUDMVCCarsRental.Entities
             Engine = engine;
             RentValuePerDay = rentValuePerDay;
         }
-
         public void Delete()
         {
             Deleted = true;

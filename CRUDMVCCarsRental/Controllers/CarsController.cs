@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using AutoMapper;
 using NuGet.Protocol;
 using Microsoft.Data.SqlClient;
+using System.Linq.Expressions;
 
 namespace CRUDMVCCarsRental.Controllers
 {
@@ -66,7 +67,8 @@ namespace CRUDMVCCarsRental.Controllers
         public async Task<IActionResult> Create(CreateCarInputModel input)
         {
             var newCar = _mapper.Map<Car>(input);
-
+            newCar.RegistrationDate = DateTime.Now;
+            
             _context.Add(newCar);
             await _context.SaveChangesAsync();
 

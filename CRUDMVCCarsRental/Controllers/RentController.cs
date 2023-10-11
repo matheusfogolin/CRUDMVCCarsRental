@@ -33,39 +33,46 @@ namespace CRUDMVCCarsRental.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(RentInputModel input)
         {
-            if(input.StartingDate >= input.EndingDate)
+            try
             {
-                throw new Exception("A data de aluguel deve ser maior que a de devolução!");
-            }
+                if (input.StartingDate >= input.EndingDate)
+                {
+                    throw new Exception("A data de aluguel deve ser maior que a de devolução!");
+                }
 
-            if (input.StartingDate <= DateTime.Now)
+                if (input.StartingDate <= DateTime.Now)
+                {
+                    throw new Exception("A data do aluguel deve ser maior que a data atual!");
+                }
+
+                var findRents = await _context.Rents
+                    .Where(x => x.EndingDate >= input.StartingDate).ToListAsync();
+
+                var cars = await _context.Cars.Where(x => !x.Deleted).ToListAsync();
+
+                if (cars == null)
+                {
+                    return NotFound();
+                }
+
+                foreach (var item in findRents)
+                {
+                    var carToRemove = cars.FirstOrDefault(x => x.Id == item.CarId);
+
+                    cars.Remove(carToRemove);
+                }
+
+                var viewModel = _mapper.Map<List<CarsViewModel>>(cars);
+
+                startDate = input.StartingDate;
+                endDate = input.EndingDate;
+
+                return View(viewModel);
+            }
+            catch(Exception exception)
             {
-                throw new Exception("A data do aluguel deve ser maior que a data atual!");
+                return Problem(exception.Message);
             }
-
-            var findRents = await _context.Rents
-                .Where(x => x.EndingDate >= input.StartingDate).ToListAsync();
-
-            var cars = await _context.Cars.Where(x => !x.Deleted).ToListAsync();
-
-            if(cars == null)
-            {
-                return NotFound();
-            }
-
-            foreach(var item in findRents)
-            {
-                var carToRemove = cars.FirstOrDefault(x => x.Id == item.CarId);
-
-                cars.Remove(carToRemove);
-            }
-
-            var viewModel = _mapper.Map<List<CarsViewModel>>(cars);
-
-            startDate = input.StartingDate;
-            endDate = input.EndingDate;
-
-            return View(viewModel);
         }
         public async Task<IActionResult> ConfirmRent(Guid? id)
         {
