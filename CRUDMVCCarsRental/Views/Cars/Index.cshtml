@@ -1,0 +1,66 @@
+﻿@model IEnumerable<CRUDMVCCarsRental.Models.CarsViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de Carros Cadastrados</h1>
+
+<p>
+    <a asp-action="Create">Criar Novo Carro</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RegistrationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FabricationYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModelYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Engine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RentValuePerDay)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegistrationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FabricationYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModelYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Engine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentValuePerDay)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a> |
+                <a asp-action="CarRentHistory" asp-route-id="@item.Id">Histórico de aluguéis</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
