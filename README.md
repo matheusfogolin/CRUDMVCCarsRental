@@ -16,7 +16,7 @@ CRUDMVCCarsRental é um projeto criado com ASP.NET MVC, que simula um sistema de
 **PASSO A PASSO**
 - Abrir o arquivo appsetings.json do projeto e, na parte ConnectionStrings, CarRentalCs, editar a primeira parte (Server=...;) para o nome do seu servidor do SQL Server;
 - Abrir o prompt de comando e navegar até a raiz do projeto;
-- Rodar o comando: dotnet ef Migrations add <NomeDaMigration> -o Data/Migrations;
+- Rodar o comando: dotnet ef Migrations add NomeDaMigration -o Data/Migrations;
 - Após a execução da migration, chegou a hora de criar nosso banco, com o comando: dotnet ef database update;
 - Pronto! Seu banco de dados do projeto está criado e pronto para ser populado.
 
@@ -25,7 +25,7 @@ CRUDMVCCarsRental é um projeto criado com ASP.NET MVC, que simula um sistema de
 - Abrir o prompt de comando e navegar até a raiz do projeto;
 - Rodar o comando: dotnet build, para executar o build do projeto;
 - Rodar o comando: dotnet run, para executar o projeto.
-- Pronto! O projeto estará em execução no localhost:<porta>, conforme imagem abaixo
+- Pronto! O projeto estará em execução no localhost:porta, conforme imagem abaixo
 ![image](https://github.com/matheusfogolin/CRUDMVCCarsRental/assets/57686224/c57c49da-40c5-4458-a7ae-57a2ea8e77be)
 
 
