@@ -47,7 +47,7 @@ namespace CRUDMVCCarsRental.Controllers
                 }
 
                 var findRents = await _context.Rents
-                    .Where(x => x.EndingDate >= input.StartingDate).ToListAsync();
+                    .Where(x => x.EndingDate >= input.StartingDate && !x.Canceled).ToListAsync();
 
                 var cars = await _context.Cars.Where(x => !x.Deleted).ToListAsync();
 

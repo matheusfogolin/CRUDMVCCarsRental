@@ -140,7 +140,7 @@ namespace CRUDMVCCarsRental.Controllers
             
             try
             {
-                var isRented = _context.Rents.Any(x => x.CarId == car.Id && x.EndingDate >= DateTime.Now);
+                var isRented = _context.Rents.Any(x => x.CarId == car.Id && x.EndingDate >= DateTime.Now && !x.Canceled);
 
                 if (isRented == true)
                 {
