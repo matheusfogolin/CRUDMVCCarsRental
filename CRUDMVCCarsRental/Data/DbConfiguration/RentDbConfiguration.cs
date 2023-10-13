@@ -27,6 +27,9 @@ namespace CRUDMVCCarsRental.Data.DbConfiguration
                 .Property(x => x.DaysRented)
                 .HasColumnType("int")
                 .HasColumnName("Days_Rented");
+            builder
+                .Property(x => x.Canceled)
+                .HasColumnType("bit");
         }
     }
 }

@@ -9,6 +9,7 @@ using CRUDMVCCarsRental.Data;
 using CRUDMVCCarsRental.Entities;
 using CRUDMVCCarsRental.Models;
 using AutoMapper;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Dependency;
 
 namespace CRUDMVCCarsRental.Controllers
 {
@@ -24,7 +25,7 @@ namespace CRUDMVCCarsRental.Controllers
             _context = context;
             _mapper = mapper;
         }
-
+        [HttpGet]
         public IActionResult Search(RentInputModel input)
         {
             return View();
@@ -74,6 +75,7 @@ namespace CRUDMVCCarsRental.Controllers
                 return Problem(exception.Message);
             }
         }
+        [HttpGet]
         public async Task<IActionResult> ConfirmRent(Guid? id)
         {
             if (id == null || _context.Rents == null)
@@ -89,6 +91,8 @@ namespace CRUDMVCCarsRental.Controllers
             }
 
             var rent = new Rent();
+
+            rent.Id = Guid.NewGuid();
             rent.StartingDate = startDate;
             rent.EndingDate = endDate;
             rent.CalculateDaysRented();
@@ -97,8 +101,6 @@ namespace CRUDMVCCarsRental.Controllers
             rent.CarId = car.Id;
 
             var viewModel = _mapper.Map<RentsViewModel>(rent);
-
-            ViewBag.viewModel = viewModel;
 
             return View(viewModel);
         }
@@ -116,7 +118,12 @@ namespace CRUDMVCCarsRental.Controllers
             _context.Add(rent);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction(nameof(Search));
+            return RedirectToAction(nameof(Created));
+        }
+
+        public IActionResult Created()
+        {
+            return View();
         }
     }
 }

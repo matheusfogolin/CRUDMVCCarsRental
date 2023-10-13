@@ -4,45 +4,47 @@
     ViewData["Title"] = "Confirm Rent";
 }
 
-<h1>Alugar</h1>
+<h1 align="center">Alugar</h1>
 
-<h3>Confirme os Dados para efetuar o aluguel.</h3>
-<div>
+<h3 align="center">Confirme os Dados para efetuar o aluguel.</h3>
+<div align="center">
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class = "">
             @Html.DisplayNameFor(model => model.StartingDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "">
             @Html.DisplayFor(model => model.StartingDate)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "">
             @Html.DisplayNameFor(model => model.EndingDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "">
             @Html.DisplayFor(model => model.EndingDate)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "">
             @Html.DisplayNameFor(model => model.Value)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "">
             @Html.DisplayFor(model => model.Value)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "">
             @Html.DisplayNameFor(model => model.DaysRented)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "">
             @Html.DisplayFor(model => model.DaysRented)
         </dd>
     </dl>
     
     <form asp-action="ConfirmRent">
+        <input type="hidden" asp-for="Id" />
         <input type="hidden" asp-for="CarId"/>
         <input type="hidden" asp-for="StartingDate" />
         <input type="hidden" asp-for="EndingDate" />
         <input type="hidden" asp-for="Value" />
         <input type="hidden" asp-for="DaysRented" />
-        <input type="submit" value="Alugar" class="btn btn-primary" /> |
+        <input type="submit" value="Alugar" class="btn btn-outline-primary m-2" />
+        <br />
         <a asp-action="Search">Voltar</a>
     </form>
 </div>

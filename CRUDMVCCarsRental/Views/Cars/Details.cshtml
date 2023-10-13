@@ -3,51 +3,50 @@
 @{
     ViewData["Title"] = "Detalhes";
 }
+<center><h1>Detalhes</h1></center>
 
-<h1>Detalhes</h1>
-
-<div>
+<div align="center">
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt>
             @Html.DisplayNameFor(model => model.RegistrationDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.RegistrationDate)
         </dd>
-        <dt class = "col-sm-2">
+        <dt>
             @Html.DisplayNameFor(model => model.Model)
         </dt>
-        <dd class = "col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.Model)
         </dd>
-        <dt class = "col-sm-2">
+        <dt>
             @Html.DisplayNameFor(model => model.FabricationYear)
         </dt>
-        <dd class = "col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.FabricationYear)
         </dd>
-        <dt class = "col-sm-2">
+        <dt>
             @Html.DisplayNameFor(model => model.ModelYear)
         </dt>
-        <dd class = "col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.ModelYear)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class>
             @Html.DisplayNameFor(model => model.Engine)
         </dt>
-        <dd class = "col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.Engine)
         </dd>
-        <dt class = "col-sm-2">
+        <dt>
             @Html.DisplayNameFor(model => model.RentValuePerDay)
         </dt>
-        <dd class = "col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.RentValuePerDay)
         </dd>
     </dl>
 </div>
-<div>
+<div align="center">
     <a asp-action="Edit" asp-route-id="@Model?.Id">Editar</a> |
     <a asp-action="Index">Voltar</a>
 </div>

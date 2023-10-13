@@ -4,6 +4,7 @@ namespace CRUDMVCCarsRental.Models
 {
     public class RentsViewModel
     {
+        public Guid Id {  get; set; }
         [Display(Name = "Data de Inicio")]
         public DateTime StartingDate { get; set; }
         [Display(Name = "Data do Fim")]

@@ -1,6 +1,8 @@
 using CRUDMVCCarsRental.Data;
 using CRUDMVCCarsRental.Mappers;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +22,18 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+var culture = new[]
+{
+    new CultureInfo("pt-BR")
+};
+
+app.UseRequestLocalization(new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture("pt-BR"),
+    SupportedCultures = culture,
+    SupportedUICultures = culture
+});
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

@@ -7,17 +7,19 @@
 
 }
 
-<h1>Selecione as datas para aluguel</h1>
+<center><h2>Selecione as datas para aluguel</h2></center>
 
 <p>
     <form asp-controller="Rent" asp-action="Search">
+        <center>
         <p>
-            Data do Aluguel: <input type="datetime-local" name="StartingDate" />
+            Data do Aluguel <input type="datetime-local" name="StartingDate" />
         </p>
         <p>
-            Data da Entrega: <input type="datetime-local" name="EndingDate" />
+            Data da Entrega <input type="datetime-local" name="EndingDate" />
         </p>
         <p>
-            <input type="submit" asp-action="Index" value="Procurar Carros" />
+                <input type="submit" asp-action="Index" class="btn btn-outline-primary m-2" value="Procurar Carros" />
         </p>
     </form>
+    </center>

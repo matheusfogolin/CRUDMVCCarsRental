@@ -13,10 +13,24 @@ html {
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;  
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    color: black;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    margin-bottom: 60px;
+    background-color: lightgreen;
+    color: black;
+    font-family: Arial, sans-serif;
+}
+
+.nav-link:hover, .nav-link:focus {
+    color: green !important;
+    background-color: #F1D7AB !important
 }

@@ -4,11 +4,11 @@
     ViewData["Title"] = "Criar";
 }
 
-<h1>Cadastrar</h1>
+<center><h1>Cadastrar</h1></center>
 
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6 offset-md-3">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -33,18 +33,15 @@
             </div>
             <div class="form-group">
                 <label asp-for="RentValuePerDay" class="control-label">Valor do aluguel diário</label>
-                <input asp-for="RentValuePerDay" class="form-control" />
+                <input asp-for="RentValuePerDay" class="form-control" type="number" step="0,01"/>
                 <span asp-validation-for="RentValuePerDay" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Criar" class="btn btn-primary" />
+                <center><input type="submit" value="Cadastrar" class="btn btn-outline-primary m-2" /></center>
             </div>
         </form>
+        <center><a asp-action="Index" class="mt-5">Voltar</a></center>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Voltar</a>
 </div>
 
 @section Scripts {

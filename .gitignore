@@ -403,3 +403,5 @@ FodyWeavers.xsd
 /CRUDMVCCarsRental/Data/Migrations/20231010133629_Initial-Migration.Designer.cs
 /CRUDMVCCarsRental/Data/Migrations/20231010184123_SecondMigration.Designer.cs
 /CRUDMVCCarsRental/Data/Migrations/20231010230628_ThirdMigration.Designer.cs
+/CRUDMVCCarsRental/Data/Migrations/20231012154611_FourthMigration.Designer.cs
+/CRUDMVCCarsRental/Data/Migrations/20231012154611_FourthMigration.cs

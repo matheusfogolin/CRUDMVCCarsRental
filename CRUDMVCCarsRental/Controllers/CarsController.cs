@@ -137,11 +137,26 @@ namespace CRUDMVCCarsRental.Controllers
                 return Problem("Entity set 'CarsRentalDbContext.Cars'  is null.");
             }
             var car = await _context.Cars.FindAsync(id);
-
-            car.Delete();
-            await _context.SaveChangesAsync();
             
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                var isRented = _context.Rents.Any(x => x.CarId == car.Id && x.EndingDate >= DateTime.Now);
+
+                if (isRented == true)
+                {
+                    throw new Exception("Impossivel excluir um carro alugado.");
+                }
+
+                car.Delete();
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception exception)
+            { 
+                return Problem(exception.Message);
+            }
+
         }
         [HttpGet]
         public async Task<IActionResult> CarRentHistory(Guid id)
@@ -151,10 +166,37 @@ namespace CRUDMVCCarsRental.Controllers
                 return NotFound();
             }
 
-            var rents = await _context.Rents.Where(x => x.CarId == id).ToListAsync();
+            var rents = await _context.Rents.Where(x => x.CarId == id && !x.Canceled).ToListAsync();
             var viewModel = _mapper.Map<List<RentsViewModel>>(rents).OrderBy(x => x.EndingDate);
 
             return View(viewModel);
+        }
+        [HttpGet]
+        public IActionResult Cancel(Guid id)
+        {
+            var rent = _context.Rents.FirstOrDefault(x => x.Id == id);
+
+            if (rent == null)
+                return NotFound();
+
+            var viewModel = _mapper.Map<RentsViewModel>(rent);
+
+            return View(viewModel);
+        }
+
+        [HttpPost, ActionName("Cancel")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ConfirmCancel(Guid id)
+        {
+            var rent = await _context.Rents.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (rent == null)
+                return NotFound();
+
+            rent.CancelRent();
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(CarRentHistory));
         }
     }
 }

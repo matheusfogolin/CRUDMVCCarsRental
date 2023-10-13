@@ -8,6 +8,7 @@
         public decimal Value { get; set; }
         public int DaysRented { get; set; }
         public Guid CarId { get; set; }
+        public bool Canceled { get; set; }
 
         public void CalculateDaysRented()
         {
@@ -16,6 +17,11 @@
         public void CalculateValueOfRent(decimal dayValue)
         {
             Value = DaysRented * dayValue;
+        }
+
+        public void CancelRent()
+        {
+            Canceled = true;
         }
     }
 }
