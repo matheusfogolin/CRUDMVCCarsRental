@@ -92,12 +92,10 @@ namespace CRUDMVCCarsRental.Controllers
 
             var rent = new Rent();
 
-            rent.Id = Guid.NewGuid();
             rent.StartingDate = startDate;
             rent.EndingDate = endDate;
             rent.CalculateDaysRented();
             rent.CalculateValueOfRent(car.RentValuePerDay);
-
             rent.CarId = car.Id;
 
             var viewModel = _mapper.Map<RentsViewModel>(rent);
@@ -107,11 +105,11 @@ namespace CRUDMVCCarsRental.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ConfirmRent(Guid id, RentsViewModel input)
+        public async Task<IActionResult> ConfirmRent(Guid carId, RentsViewModel input)
         {
-            var car = await _context.Cars.FirstOrDefaultAsync(x => x.Id == id);
+            var car = await _context.Cars.FirstOrDefaultAsync(x => x.Id == carId);
             var rent = _mapper.Map<Rent>(input);
-
+            rent.Id = Guid.NewGuid();
             if (rent == null || car == null)
                 return NotFound();
 
