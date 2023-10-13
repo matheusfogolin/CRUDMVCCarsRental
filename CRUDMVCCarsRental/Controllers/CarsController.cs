@@ -66,13 +66,24 @@ namespace CRUDMVCCarsRental.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreateCarInputModel input)
         {
-            var newCar = _mapper.Map<Car>(input);
-            newCar.RegistrationDate = DateTime.Now;
-            
-            _context.Add(newCar);
-            await _context.SaveChangesAsync();
+            try
+            {
+                if (input.FabricationYear > input.ModelYear)
+                {
+                    throw new Exception("Ano de fabricação não pode ser maior que o ano do modelo!");
+                }
+                var newCar = _mapper.Map<Car>(input);
+                newCar.RegistrationDate = DateTime.Now;
 
-            return RedirectToAction(nameof(Index));
+                _context.Add(newCar);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception exception)
+            {
+                return Problem(exception.Message);
+            }
         }
 
         [HttpGet]

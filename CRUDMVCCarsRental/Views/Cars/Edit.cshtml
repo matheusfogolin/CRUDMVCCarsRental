@@ -38,7 +38,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="RentValuePerDay" class="control-label">Valor diário do aluguel</label>
-                <input asp-for="RentValuePerDay" class="form-control" />
+                <input asp-for="RentValuePerDay" class="form-control" type="number" step="0,01" />
                 <span asp-validation-for="RentValuePerDay" class="text-danger"></span>
             </div>
             <div class="form-group">
